@@ -1,18 +1,8 @@
-FROM obsidiandynamics/kafka
+# Use the official Kafdrop image as the base image
+FROM obsidiandynamics/kafdrop
 
 # Set environment variables
-ENV KAFKA_LISTENERS="INTERNAL://:29092,EXTERNAL://:9092"
-ENV KAFKA_ADVERTISED_LISTENERS="INTERNAL://kafka:29092,EXTERNAL://localhost:9092"
-ENV KAFKA_LISTENER_SECURITY_PROTOCOL_MAP="INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT"
-ENV KAFKA_INTER_BROKER_LISTENER_NAME="INTERNAL"
-ENV KAFKA_ZOOKEEPER_SESSION_TIMEOUT="6000"
-ENV KAFKA_RESTART_ATTEMPTS="10"
-ENV KAFKA_RESTART_DELAY="5"
-ENV ZOOKEEPER_AUTOPURGE_PURGE_INTERVAL="0"
+ENV KAFKA_BROKERCONNECT=kafka.railway.internal:29092
 
-# Expose ports
-EXPOSE 2181 9092
-
-# The CMD instruction should be taken from the base image, 
-# but if you need to override it, you can add it here:
-# CMD ["start-kafka.sh"]
+# Expose the required port
+EXPOSE 9000
