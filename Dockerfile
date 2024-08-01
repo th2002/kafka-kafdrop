@@ -2,7 +2,7 @@
 FROM obsidiandynamics/kafdrop
 
 # Set environment variables
-ENV KAFKA_BROKERCONNECT=kafka.railway.internal:29092
+ENV KAFKA_BROKERCONNECT=kafka:29092
 
 # Expose the required port
 EXPOSE 9000
